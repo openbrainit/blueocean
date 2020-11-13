@@ -2,9 +2,20 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      agent any
-      steps {
-        echo 'Hello from machin'
+      parallel {
+        stage('Build') {
+          agent any
+          steps {
+            echo 'Hello from machin'
+          }
+        }
+
+        stage('') {
+          steps {
+            echo 'Nouvelle branche'
+          }
+        }
+
       }
     }
 
